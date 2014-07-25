@@ -11,6 +11,6 @@ namespace Virhi\Bundle\PaginationBundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class VirhiPaginationBundle extends Bundle {
+class VirhiBundlePaginationBundle extends Bundle {
 
 } 

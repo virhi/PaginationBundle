@@ -1,0 +1,13 @@
+parameters:
+    virhi_pagination.subscriber.pagination.class: Virhi\Bundle\PaginationBundle\Pagination\EventSubscriber\PaginationEventSubscriber
+    virhi_pagination.resolver.pagination.class: Virhi\Bundle\PaginationBundle\Pagination\HeaderResolver\PaginationHeaderResolver
+
+services:
+    virhi_pagination.subscriber.pagination:
+        class: %virhi_pagination.subscriber.pagination.class%
+        arguments: [@virhi_pagination.resolver.pagination]
+        tags:
+            - { name: kernel.event_subscriber }
+
+    virhi_pagination.resolver.pagination:
+        class: %virhi_pagination.resolver.pagination.class%

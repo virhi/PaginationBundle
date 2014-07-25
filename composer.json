@@ -17,6 +17,7 @@
     },
     "require": {
         "php": "~5.3",
-        "symfony/routing": "@dev"
+        "symfony/routing": "@dev",
+        "symfony/event-dispatcher": "@dev"
     }
 }
