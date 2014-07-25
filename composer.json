@@ -1,0 +1,21 @@
+{
+    "name": "virhi/paginationbundle",
+    "description": "manage pagination",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vincent Rhino",
+            "email": "vincent.rhino@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "Virhi\\Bundle\\PaginationBundle": "src/"
+        }
+    },
+    "require": {
+        "php": "~5.3"
+    }
+}
