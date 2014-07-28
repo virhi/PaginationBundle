@@ -47,9 +47,12 @@ class PaginationEventSubscriber implements EventSubscriberInterface
     {
         $headerKey = 'X-Ranges';
         $request = $event->getRequest();
+
         if ($request->headers->has($headerKey)) {
             $this->pagination = true;
             $this->resolver->resolve($request->headers->get($headerKey));
+            $request->query->add(array('virhi_pagination_page' => $this->resolver->getPage()));
+            $request->query->add(array('virhi_pagination_limit' => $this->resolver->getLimit()));
         }
     }
 

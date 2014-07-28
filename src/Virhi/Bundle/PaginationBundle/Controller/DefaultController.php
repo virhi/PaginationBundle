@@ -1,6 +1,6 @@
 <?php
 
-namespace Virhi\PaginationBundle\Controller;
+namespace Virhi\Bundle\PaginationBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
