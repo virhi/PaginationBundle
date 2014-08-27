@@ -1,0 +1,21 @@
+<div class="block-pagination">
+    <ul class="pagination">
+        <li><a href="{{ pagination.firstPage.url }}">&laquo;</a></li>
+        {% if pagination.previous is not null %}
+            <li><a href="{{ pagination.previous.url }}">&lsaquo;</a></li>
+        {% endif %}
+        {% for page in pagination.listPage %}
+            {% if page.display %}
+                {% if page.current %}
+                    <li class="active"><a href="{{ page.url }}">{{ page.id }}</a></li>
+                {% else %}
+                    <li><a href="{{ page.url }}">{{ page.id }}</a></li>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+        {% if pagination.next is not null %}
+            <li><a href="{{ pagination.next.url }}">&rsaquo;</a></li>
+        {% endif %}
+        <li><a href="{{ pagination.lastPage.url }}">&raquo;</a></li>
+    </ul>
+</div>
