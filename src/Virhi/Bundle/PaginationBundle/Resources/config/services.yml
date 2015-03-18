@@ -2,6 +2,7 @@ parameters:
     virhi_pagination.subscriber.pagination.class: Virhi\Bundle\PaginationBundle\Pagination\EventSubscriber\PaginationEventSubscriber
     virhi_pagination.resolver.pagination.class: Virhi\Bundle\PaginationBundle\Pagination\HeaderResolver\PaginationHeaderResolver
     virhi_pagination.factory.fixedpagination.class: Virhi\Bundle\PaginationBundle\Factory\FixedPaginationFactory
+    virhi_pagination.factory.pagination.class: Virhi\Bundle\PaginationBundle\Factory\PaginationFactory
 
 services:
     virhi_pagination.subscriber.pagination:
@@ -12,6 +13,10 @@ services:
 
     virhi_pagination.resolver.pagination:
         class: %virhi_pagination.resolver.pagination.class%
+
+    virhi_pagination.factory.pagination:
+        class: %virhi_pagination.factory.pagination.class%
+        arguments: [@router]
 
     virhi_pagination.factory.fixedpagination:
         class: %virhi_pagination.factory.fixedpagination.class%

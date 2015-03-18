@@ -17,11 +17,17 @@ class FixedPagination extends AdvancePagination
      * @var int
      */
     protected $range;
+    protected $needToAddRangeToEnd;
+    protected $needToAddRangeToStart;
+
 
     function __construct(Router $router, $route, ArrayObject $routeParam, $limit, $nbElement = 0, $offset = 0, $range = 0)
     {
         $this->range = $range;
+        $this->needToAddRangeToEnd = 0;
+        $this->needToAddRangeToStart = 0;
         parent::__construct($router, $route, $routeParam, $limit, $nbElement, $offset);
+
     }
 
     public function buildListPage()
@@ -37,6 +43,10 @@ class FixedPagination extends AdvancePagination
         $startRange = $this->getStartRange($range);
         $endRange   = $this->getEndRange($range);
 
+        if ($this->needToAddRangeToStart !== 0) {
+            $startRange = $this->getStartRange($range + $this->needToAddRangeToStart);
+        }
+
         if ($range > 0) {
             foreach ($this->getListPage() as $page) {
                 if ($page instanceof Page &&  ($page->getId() < $startRange || $page->getId() > $endRange) ) {
@@ -48,12 +58,22 @@ class FixedPagination extends AdvancePagination
 
     protected function getStartRange($range)
     {
-        return $this->getCurrant()->getId() - $range;
+        $result = $this->getCurrant()->getId() - $range;
+        if ($result < 1) {
+            $this->needToAddRangeToEnd = abs($result) + 1;
+        }
+        return $result;
     }
 
     protected function getEndRange($range)
     {
-        return $this->getCurrant()->getId() + $range ;
+        $result = $this->getCurrant()->getId() + $range + $this->needToAddRangeToEnd;
+
+        if (($this->getLastPage()->getId() - $result ) < 0) {
+           $this->needToAddRangeToStart = abs($this->getLastPage()->getId() - $result );
+        }
+
+        return $result;
     }
 
     /**

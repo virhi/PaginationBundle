@@ -31,7 +31,7 @@ class FixedPaginationFactory extends PaginationFactory
             $params->getRouteParam(),
             $params->getLimit(),
             $params->getNbElement(),
-            $params->getOffset(),
+            $params->getIdPage(),
             $params->getRange()
         );
 

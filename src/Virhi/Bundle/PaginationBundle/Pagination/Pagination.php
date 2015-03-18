@@ -83,7 +83,6 @@ class Pagination
         if ($this->nbElement > $this->limit) {
             for ($pas = 1, $index = 1; $pas <= $this->nbElement; $pas += $this->limit, $index++) {
                 $page = new Page($index, $this->router, $this->route, $this->routeParam);
-
                 if ((int)$this->offset === (int)$page->getId()) {
                     $page->setCurrent(true);
                     $this->setCurrant($page);

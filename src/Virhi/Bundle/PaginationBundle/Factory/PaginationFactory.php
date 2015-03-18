@@ -31,7 +31,7 @@ class PaginationFactory
             $params->getRouteParam(),
             $params->getLimit(),
             $params->getNbElement(),
-            $params->getOffset()
+            $params->getIdPage()
         );
         return $pagination;
     }
