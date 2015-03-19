@@ -9,24 +9,7 @@
 namespace Virhi\Bundle\PaginationBundle\Pagination\Params;
 
 
-class RangePaginationParams extends PaginationParams
+class RangePaginationParams extends FixedPaginationParams
 {
-    protected $range;
-
-    /**
-     * @param mixed $range
-     */
-    public function setRange($range)
-    {
-        $this->range = $range;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getRange()
-    {
-        return $this->range;
-    }
 
 }

@@ -3,6 +3,7 @@ parameters:
     virhi_pagination.resolver.pagination.class: Virhi\Bundle\PaginationBundle\Pagination\HeaderResolver\PaginationHeaderResolver
     virhi_pagination.factory.fixedpagination.class: Virhi\Bundle\PaginationBundle\Factory\FixedPaginationFactory
     virhi_pagination.factory.pagination.class: Virhi\Bundle\PaginationBundle\Factory\PaginationFactory
+    virhi_pagination.factory.range_pagination.class: Virhi\Bundle\PaginationBundle\Factory\RangeAdvancePaginationFactory
 
 services:
     virhi_pagination.subscriber.pagination:
@@ -20,4 +21,8 @@ services:
 
     virhi_pagination.factory.fixedpagination:
         class: %virhi_pagination.factory.fixedpagination.class%
-        arguments: [@router]
+        parent: virhi_pagination.factory.pagination
+
+    virhi_pagination.factory.range_pagination:
+        class: %virhi_pagination.factory.range_pagination.class%
+        parent: virhi_pagination.factory.fixedpagination

@@ -2,30 +2,29 @@
 /**
  * Created by PhpStorm.
  * User: virhi
- * Date: 27/08/2014
- * Time: 13:58
+ * Date: 19/03/2015
+ * Time: 09:43
  */
 
 namespace Virhi\Bundle\PaginationBundle\Factory;
 
-use Virhi\Bundle\PaginationBundle\Pagination\FixedPagination;
+use Virhi\Bundle\PaginationBundle\Pagination\RangeAdvancePagination;
 use Virhi\Bundle\PaginationBundle\Pagination\Params\PaginationParams;
-use Virhi\Bundle\PaginationBundle\Pagination\Params\FixedPaginationParams;
+use Virhi\Bundle\PaginationBundle\Pagination\Params\RangePaginationParams;
 
-
-class FixedPaginationFactory extends PaginationFactory
+class RangeAdvancePaginationFactory extends FixedPaginationFactory
 {
-
     /**
-     * @return FixedPagination
+     * @param PaginationParams $params
+     * @return RangeAdvancePagination
      */
     public function getPagination(PaginationParams $params)
     {
-        if (!$params instanceof FixedPaginationParams) {
-            throw new \RuntimeException('Wrong Pagination Params, need FixedPaginationParams');
+        if (!$params instanceof RangePaginationParams) {
+            throw new \RuntimeException('Wrong Pagination Params, need RangePaginationParams');
         }
 
-        $pagination = new FixedPagination(
+        $pagination = new RangeAdvancePagination(
             $this->router,
             $params->getRoute(),
             $params->getRouteParam(),
@@ -37,4 +36,4 @@ class FixedPaginationFactory extends PaginationFactory
 
         return $pagination;
     }
-} 
+}
