@@ -54,6 +54,7 @@ class Pagination
      */
     protected $lastPage;
 
+
     /**
      * @var \Symfony\Component\Routing\Router;
      */
@@ -225,4 +226,5 @@ class Pagination
     {
         return $this->currant;
     }
+
 }

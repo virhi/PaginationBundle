@@ -35,7 +35,9 @@ class AdvancePagination extends Pagination
     {
         if ($this->getCurrant() instanceof Page && $this->getCurrant()->getId() > 1) {
             $previousId = $this->getCurrant()->getId() - 1;
-            $this->setPrevious($this->listPage->offsetGet($previousId));
+            if ($this->listPage->offsetExists($previousId)) {
+                $this->setPrevious($this->listPage->offsetGet($previousId));
+            }
         }
     }
 
@@ -43,7 +45,9 @@ class AdvancePagination extends Pagination
     {
         if ($this->getCurrant() instanceof Page && $this->getCurrant()->getId() < $this->listPage->count()) {
             $nextId = $this->getCurrant()->getId() + 1;
-            $this->setNext($this->listPage->offsetGet($nextId));
+            if ($this->listPage->offsetExists($nextId)) {
+                $this->setNext($this->listPage->offsetGet($nextId));
+            }
         }
     }
 

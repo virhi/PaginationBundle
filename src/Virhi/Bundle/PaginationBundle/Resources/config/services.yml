@@ -6,15 +6,6 @@ parameters:
     virhi_pagination.factory.range_pagination.class: Virhi\Bundle\PaginationBundle\Factory\RangeAdvancePaginationFactory
 
 services:
-    virhi_pagination.subscriber.pagination:
-        class: %virhi_pagination.subscriber.pagination.class%
-        arguments: [@virhi_pagination.resolver.pagination]
-        tags:
-            - { name: kernel.event_subscriber }
-
-    virhi_pagination.resolver.pagination:
-        class: %virhi_pagination.resolver.pagination.class%
-
     virhi_pagination.factory.pagination:
         class: %virhi_pagination.factory.pagination.class%
         arguments: [@router]
